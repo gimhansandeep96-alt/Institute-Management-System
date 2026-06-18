@@ -38,7 +38,7 @@ public class courseDAOImpl {
       boolean rs=false;
       Connection conn= DBconnection.getInstance().getConnection();
     if(conn!=null){
-        String sql ="UPDATE course SET name=?, duration=?, price=? WHERE id=?";
+        String sql ="UPDATE course SET course_name=?, duration=?, price=? WHERE course_id=?";
         
          PreparedStatement stm =conn.prepareStatement(sql);
       
@@ -59,7 +59,7 @@ public class courseDAOImpl {
       Connection conn= DBconnection.getInstance().getConnection();
       
   if(conn!=null){
-        String sql ="DELETE FROM course WHERE id=?";
+        String sql ="DELETE FROM course WHERE course_id=?";
         PreparedStatement stm =conn.prepareStatement(sql);
         stm.setInt(1,CourseId);
         int result =stm.executeUpdate();

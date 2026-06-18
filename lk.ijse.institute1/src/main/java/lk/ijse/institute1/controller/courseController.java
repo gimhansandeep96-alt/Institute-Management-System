@@ -69,8 +69,19 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
     coursetable.setItems(courselist);
     loadAllCourses();
     
-    
+   coursetable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if (newValue != null) {
+        
+        txtid.setText(String.valueOf(newValue.getCourseId())); 
+        txtname.setText(newValue.getCourseName());
+        txtduration.setText(newValue.getDuration());
+        txtprice.setText(String.valueOf(newValue.getPrice()));
     }
+});
+    }
+    
+    
+    
    @FXML
     void clearbtnOnAction(ActionEvent event) {
         clearFields();
@@ -83,7 +94,7 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
         txtprice.clear();
     }
 
-    // ==================== CORRECTED DELETE BUTTON ====================
+    
     @FXML
     void deletebtnOnAction(ActionEvent event) {
         try {
@@ -93,6 +104,7 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Deleted Successfully! 😍").show();
                 clearFields();
+                loadAllCourses();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to Delete Course! ❌").show();
             }
@@ -102,8 +114,7 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
-    // ==================== SAVE BUTTON ====================
+   
     @FXML
     void savebtnOnAction(ActionEvent event) {
         try {
@@ -119,6 +130,7 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Saved Successfully! 😍").show();
                 clearFields();
+                loadAllCourses();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to Save Course! ❌").show();
             }
@@ -129,7 +141,7 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
         }
     }
 
-    // ==================== UPDATE BUTTON ====================
+    
     @FXML
     void updatebtnOnAction(ActionEvent event) {
         try {
@@ -144,7 +156,9 @@ private final courseDAOImpl courseDAO = new courseDAOImpl();
             boolean result = courseDAO.update(Entity);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Updated Successfully! 😍").show();
-                clearFields();
+                 clearFields();
+                loadAllCourses();
+                
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to Update Course! ❌").show();
             }
