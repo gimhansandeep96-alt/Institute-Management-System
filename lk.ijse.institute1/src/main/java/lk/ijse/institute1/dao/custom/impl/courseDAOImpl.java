@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lk.ijse.institute1.dao;
+package lk.ijse.institute1.dao.custom.impl;
 
 import db.DBconnection;
 import dto.courseDTO;
@@ -10,12 +10,13 @@ import entity.courseEntity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import lk.ijse.institute1.dao.custom.courseDAO;
 /**
  *
  * @author asus
  */
-public class courseDAOImpl {
-    
+public class courseDAOImpl implements courseDAO {
+  @Override 
   public boolean save(courseEntity Entity)throws Exception{
   Connection conn= DBconnection.getInstance().getConnection();
   if(conn!=null){
@@ -33,7 +34,7 @@ public class courseDAOImpl {
   }
   return false;
  }
-
+  @Override
   public boolean update(courseEntity Entity)throws Exception{
       boolean rs=false;
       Connection conn= DBconnection.getInstance().getConnection();
@@ -53,7 +54,7 @@ public class courseDAOImpl {
   return rs;
   }
 
-
+  @Override
   public boolean delete(int CourseId )throws Exception{
       boolean rs=false;
       Connection conn= DBconnection.getInstance().getConnection();
@@ -68,8 +69,8 @@ public class courseDAOImpl {
   return rs;
  
   }
-
-public java.util.ArrayList<courseEntity> getAll() throws Exception {
+  @Override
+  public java.util.ArrayList<courseEntity> getAll() throws Exception {
     Connection conn = DBconnection.getInstance().getConnection();
     java.util.ArrayList<courseEntity> allCourses = new java.util.ArrayList<>();
 

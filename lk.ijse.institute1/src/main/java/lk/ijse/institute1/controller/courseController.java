@@ -12,10 +12,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.institute1.dao.courseDAOImpl;
+import lk.ijse.institute1.dao.DAOFactory;
+import lk.ijse.institute1.dao.custom.courseDAO;
+import lk.ijse.institute1.dao.custom.impl.courseDAOImpl;
 
 public class courseController {
-private final courseDAOImpl courseDAO = new courseDAOImpl();
+
+private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.COURSE);
+
     @FXML
     private Button clearbtn;
     
