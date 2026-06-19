@@ -4,6 +4,7 @@
  */
 package bo;
 
+import bo.custom.Impl.attendancrBOImpl;
 import bo.custom.Impl.classsheduleBOImpl;
 import bo.custom.Impl.courseBOImpl;
 import bo.custom.Impl.lecturerBOImpl;
@@ -21,7 +22,7 @@ public class BOFactory {
     
     
     public static enum BOTypes{
-        COURSE,LECTURER,STUDENT,SHEDULE,//ATTENDANCE
+        COURSE,LECTURER,STUDENT,SHEDULE,ATTENDANCE
     }
   public static BOFactory getInstance(){
   return (df==null)? df= new BOFactory():df ;
@@ -43,8 +44,8 @@ public superBO getBO(BOTypes type) {
         case SHEDULE:
             return new classsheduleBOImpl();
             
-        //case ATTENDANCE:
-           // return new courseBOImpl();
+        case ATTENDANCE:
+            return new attendancrBOImpl();
             
         default:
             return null;

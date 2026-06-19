@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lk.ijse.institute1.dao;
-
+import lk.ijse.institute1.dao.custom.impl.attendanceDAOImpl;
 import lk.ijse.institute1.dao.custom.impl.classsheduleDAOImpl;
 import lk.ijse.institute1.dao.custom.impl.lecturerDAOImpl;
 import lk.ijse.institute1.dao.custom.impl.studentDAOImpl;
@@ -18,7 +18,7 @@ public class DAOFactory {
     private static DAOFactory df;
     
     public static enum DAOTypes{
-        COURSE,LECTURER,STUDENT,SHEDULE,//ATTENDANCE
+        COURSE,LECTURER,STUDENT,SHEDULE,ATTENDANCE
     }
   public static DAOFactory getInstance(){
   return (df==null)? df= new DAOFactory():df ;
@@ -39,9 +39,9 @@ public superDAO getDAO(DAOTypes type) {
         case SHEDULE:
             return new classsheduleDAOImpl();
             
-        //case ATTENDANCE:
+        case ATTENDANCE:
             
-            //return new courseBOImpl();
+            return new attendanceDAOImpl();
             
         default:
             return null;
