@@ -1,5 +1,9 @@
 package lk.ijse.institute1.controller;
 
+import bo.BOFactory;
+import bo.custom.courseBO;
+import bo.custom.Impl.courseBOImpl;
+
 import dto.courseDTO;
 import entity.courseEntity;
 import javafx.collections.FXCollections;
@@ -18,7 +22,7 @@ import lk.ijse.institute1.dao.custom.impl.courseDAOImpl;
 
 public class courseController {
 
-private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.COURSE);
+private final courseBO courseBO =(courseBO)BOFactory.getInstance().getBO(BOFactory.BOTypes.COURSE);
 
     @FXML
     private Button clearbtn;
@@ -103,7 +107,7 @@ private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(
     void deletebtnOnAction(ActionEvent event) {
         try {
             int id = Integer.parseInt(txtid.getText().trim());
-            boolean result = courseDAO.delete(id);
+            boolean result = courseBO.delete(id);
             
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Deleted Successfully! 😍").show();
@@ -128,9 +132,9 @@ private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(
             double price = Double.parseDouble(txtprice.getText().trim());
 
             courseDTO dto = new courseDTO(id, name, duration, price);
-            courseEntity Entity = new courseEntity(dto.getCourseId(), dto.getCourseName(), dto.getDuration(), dto.getPrice());
+            //courseEntity Entity = new courseEntity(dto.getCourseId(), dto.getCourseName(), dto.getDuration(), dto.getPrice());
 
-            boolean result = courseDAO.save(Entity);
+            boolean result = courseBO.save(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Saved Successfully! 😍").show();
                 clearFields();
@@ -155,9 +159,9 @@ private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(
             double price = Double.parseDouble(txtprice.getText().trim());
 
             courseDTO dto = new courseDTO(id, name, duration, price);
-            courseEntity Entity = new courseEntity(dto.getCourseId(), dto.getCourseName(), dto.getDuration(), dto.getPrice());
+            //courseEntity Entity = new courseEntity(dto.getCourseId(), dto.getCourseName(), dto.getDuration(), dto.getPrice());
 
-            boolean result = courseDAO.update(Entity);
+            boolean result = courseBO.update(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Course Updated Successfully! 😍").show();
                  clearFields();
@@ -175,18 +179,14 @@ private final courseDAO courseDAO = (courseDAO) DAOFactory.getInstance().getDAO(
     
     
     private void loadAllCourses() {
-        try {
-          courselist.clear();  
-          java.util.ArrayList<courseEntity> entityList = courseDAO.getAll();  
-           for (courseEntity entity : entityList) {
-            courseDTO dto = new courseDTO(
-                entity.getCourse_id(),
-                entity.getCourse_name(),
-                entity.getDuration(),
-                entity.getPrice()
-            );
-            courselist.add(dto); }
-          } catch (Exception e) {
+      try {
+        courselist.clear();  
+        
+        java.util.ArrayList<courseDTO> dtoList = courseBO.getAll();  
+        
+        courselist.addAll(dtoList); 
+        
+    } catch (Exception e) {
         new Alert(Alert.AlertType.ERROR, "Failed to load courses: " + e.getMessage()).show();
     }
 } 

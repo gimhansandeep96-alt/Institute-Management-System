@@ -1,5 +1,10 @@
 package lk.ijse.institute1.controller;
 
+import bo.BOFactory;
+import static bo.BOFactory.BOTypes.STUDENT;
+import bo.custom.studentBO;
+import bo.custom.Impl.studentBOImpl;
+import bo.superBO;
 import dto.studentDTO;
 import entity.studentEntity;
 import javafx.collections.FXCollections;
@@ -18,7 +23,8 @@ import lk.ijse.institute1.dao.custom.studentDAO;
 import lk.ijse.institute1.dao.custom.impl.studentDAOImpl;
 
 public class studentController {
-private final studentDAO studentDAO = (studentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STUDENT);
+private final studentBO studentBO =(studentBO)BOFactory.getInstance().getBO(BOFactory.BOTypes.STUDENT);
+
     @FXML
     private Button clearbtn;
 
@@ -101,7 +107,7 @@ private final studentDAO studentDAO = (studentDAO) DAOFactory.getInstance().getD
     void deletebtnOnAction(ActionEvent event) {
 try {
             int id = Integer.parseInt(sidtxt.getText().trim());
-            boolean result = studentDAO.delete(id);
+            boolean result = studentBO.delete(id);
             
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Student Deleted Successfully! 😍").show();
@@ -126,9 +132,9 @@ try {
             String adress =sadresstxt.getText().trim();
 
             studentDTO dto = new studentDTO(id, name, email, adress);
-            studentEntity Entity = new studentEntity(dto.getStudentId(), dto.getStudentName(), dto.getStudentemail(), dto.getStudentadress());
+            //studentEntity Entity = new studentEntity(dto.getStudentId(), dto.getStudentName(), dto.getStudentemail(), dto.getStudentadress());
 
-            boolean result = studentDAO.save(Entity);
+            boolean result = studentBO.save(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Student Saved Successfully! 😍").show();
                 clearFields();
@@ -156,9 +162,9 @@ try {
             String adress =sadresstxt.getText().trim();
 
             studentDTO dto = new studentDTO(id, name, email, adress);
-            studentEntity Entity = new studentEntity(dto.getStudentId(), dto.getStudentName(), dto.getStudentemail(), dto.getStudentadress());
+            //studentEntity Entity = new studentEntity(dto.getStudentId(), dto.getStudentName(), dto.getStudentemail(), dto.getStudentadress());
             
-            boolean result = studentDAO.update(Entity);
+            boolean result = studentBO.update(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "Student Updated Successfully! 😍").show();
                 clearFields();
@@ -175,36 +181,33 @@ try {
 
     
     private void loadAllstudent() {
-        try {
-          studentlist.clear();  
-          java.util.ArrayList<studentEntity> entityList = studentDAO.getAll();  
-           for (studentEntity entity : entityList) {
-            studentDTO dto = new studentDTO(
-                entity.getStudent_id(),
-                entity.getStudent_name(),
-                entity.getEmail(),
-                entity.getAdress()
-            );
-            studentlist.add(dto); }
-          } catch (Exception e) {
-        new Alert(Alert.AlertType.ERROR, "Failed to load student: " + e.getMessage()).show();
+         try {
+        studentlist.clear();  
+        
+        java.util.ArrayList<studentDTO> dtoList = studentBO.getAll();  
+        
+        studentlist.addAll(dtoList); 
+        
+    } catch (Exception e) {
+        new Alert(Alert.AlertType.ERROR, "Failed to load Student: " + e.getMessage()).show();
     }
 } 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+

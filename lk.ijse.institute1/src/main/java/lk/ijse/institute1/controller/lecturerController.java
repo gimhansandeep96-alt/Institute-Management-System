@@ -1,6 +1,10 @@
 package lk.ijse.institute1.controller;
 
 
+import bo.BOFactory;
+import static bo.BOFactory.BOTypes.LECTURER;
+import bo.custom.lecturerBO;
+import bo.custom.Impl.lecturerBOImpl;
 import dto.lecturerDTO;
 import entity.lecturerEntity;
 import javafx.collections.FXCollections;
@@ -18,8 +22,9 @@ import static lk.ijse.institute1.dao.DAOFactory.DAOTypes.LECTURER;
 import lk.ijse.institute1.dao.custom.lecturerDAO;
 import lk.ijse.institute1.dao.custom.impl.lecturerDAOImpl;
 
-public class lecturerController {
-private final lecturerDAO lecturerDAO = (lecturerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STUDENT);
+public class lecturerController   {
+    
+private final lecturerBO lecturerBO=(lecturerBO)BOFactory.getInstance().getBO(BOFactory.BOTypes.LECTURER);
     @FXML
     private Button clearbtn;
 
@@ -88,7 +93,7 @@ private final lecturerDAO lecturerDAO = (lecturerDAO) DAOFactory.getInstance().g
     void deletebtnOnAction(ActionEvent event) {
  try {
             int id = Integer.parseInt(lidtxt.getText().trim());
-            boolean result = lecturerDAO.delete(id);
+            boolean result = lecturerBO.delete(id);
             
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "lecturer Deleted Successfully! 😍").show();
@@ -114,9 +119,9 @@ private final lecturerDAO lecturerDAO = (lecturerDAO) DAOFactory.getInstance().g
             String adress=ladresstxt.getText();
 
             lecturerDTO dto = new lecturerDTO(id, name, email, adress);
-            lecturerEntity Entity = new lecturerEntity(dto.getLecturerId(), dto.getLecturerName(), dto.getLectureremail(), dto.getLectureradress());
+            //lecturerEntity Entity = new lecturerEntity(dto.getLecturerId(), dto.getLecturerName(), dto.getLectureremail(), dto.getLectureradress());
 
-            boolean result = lecturerDAO.save(Entity);
+            boolean result = lecturerBO.save(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "lecturer Saved Successfully! 😍").show();
                 clearFields();
@@ -140,9 +145,9 @@ try {
             String adress=ladresstxt.getText();
 
             lecturerDTO dto = new lecturerDTO(id, name, email, adress);
-            lecturerEntity Entity = new lecturerEntity(dto.getLecturerId(), dto.getLecturerName(), dto.getLectureremail(), dto.getLectureradress());
+            //lecturerEntity Entity = new lecturerEntity(dto.getLecturerId(), dto.getLecturerName(), dto.getLectureremail(), dto.getLectureradress());
 
-            boolean result = lecturerDAO.update(Entity);
+            boolean result = lecturerBO.update(dto);
             if (result) {
                 new Alert(Alert.AlertType.INFORMATION, "lecturer Updated Successfully! 😍").show();
                 clearFields();
@@ -161,21 +166,15 @@ try {
 
 private void loadAlllectures(){
     try {
-          lecturerlist.clear();  
-          java.util.ArrayList<lecturerEntity> entityList=lecturerDAO.getAll();  
-           for (lecturerEntity entity : entityList) {
-            lecturerDTO dto = new lecturerDTO(
-                entity.getId(),
-                entity.getName(),
-                entity.getEmail(),
-                entity.getAddress()
-            );
-            lecturerlist.add(dto); }
-          } catch (Exception e) {
+        lecturerlist.clear();  
+        
+        java.util.ArrayList<lecturerDTO> dtoList = lecturerBO.getAllLecturers(); 
+        
+        lecturerlist.addAll(dtoList); 
+        
+    } catch (Exception e) {
         new Alert(Alert.AlertType.ERROR, "Failed to load lecturer: " + e.getMessage()).show();
-        
-        
-          }
+    }
 }
 }
 
