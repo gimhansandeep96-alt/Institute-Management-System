@@ -8,27 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="773.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="lk.ijse.institute1.controller.lecturerController">
+<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.institute1.controller.lecturerController">
    <children>
       <Label layoutX="46.0" layoutY="63.0" text="Lecturer Registration">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="46.0" layoutY="122.0" text="Lecturer ID" />
       <Label layoutX="46.0" layoutY="181.0" text="Lecturer Name" />
       <Label layoutX="46.0" layoutY="238.0" text="Lecturer Email" />
       <Label layoutX="50.0" layoutY="305.0" prefHeight="18.0" prefWidth="105.0" text="Lecturer Adress" />
-      <TextField fx:id="lidtxt" layoutX="46.0" layoutY="140.0" />
-      <TextField fx:id="lnametxt" layoutX="47.0" layoutY="199.0" />
-      <TextField fx:id="lemailtxt" layoutX="48.0" layoutY="262.0" />
-      <TextField fx:id="ladresstxt" layoutX="49.0" layoutY="332.0" />
-      <Button fx:id="savebtn" layoutX="46.0" layoutY="431.0" mnemonicParsing="false" onAction="#savebtnOnAction" text="Save" />
-      <Button fx:id="updatebtn" layoutX="121.0" layoutY="431.0" mnemonicParsing="false" onAction="#updatebtnOnAction" text="Update" />
-      <Button fx:id="deletebtn" layoutX="199.0" layoutY="431.0" mnemonicParsing="false" onAction="#deletebtnOnAction" text="Delete" />
-      <Button fx:id="clearbtn" layoutX="272.0" layoutY="431.0" mnemonicParsing="false" onAction="#clearbtnOnAction" text="Clear" />
-      <TableView fx:id="lectable" layoutX="284.0" layoutY="40.0" prefHeight="368.0" prefWidth="460.0">
+      <TextField fx:id="lidtxt" layoutX="46.0" layoutY="140.0" promptText="01" />
+      <TextField fx:id="lnametxt" layoutX="47.0" layoutY="199.0" promptText="Kavidu" />
+      <TextField fx:id="lemailtxt" layoutX="48.0" layoutY="262.0" promptText="Kavidu@gmail.com" />
+      <TextField fx:id="ladresstxt" layoutX="49.0" layoutY="332.0" promptText="Pandura" />
+      <Button fx:id="savebtn" layoutX="46.0" layoutY="431.0" mnemonicParsing="false" onAction="#savebtnOnAction" style="-fx-background-color: #1abc9c;" text="Save" />
+      <Button fx:id="updatebtn" layoutX="121.0" layoutY="431.0" mnemonicParsing="false" onAction="#updatebtnOnAction" style="-fx-background-color: #2ecc71;" text="Update" />
+      <Button fx:id="deletebtn" layoutX="199.0" layoutY="431.0" mnemonicParsing="false" onAction="#deletebtnOnAction" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Button fx:id="clearbtn" layoutX="272.0" layoutY="431.0" mnemonicParsing="false" onAction="#clearbtnOnAction" style="-fx-background-color: #95a5a6;" text="Clear" />
+      <TableView fx:id="lectable" layoutX="234.0" layoutY="120.0" prefHeight="275.0" prefWidth="439.0">
         <columns>
           <TableColumn fx:id="lectableid" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="lectablename" prefWidth="116.00006103515625" text="Name" />

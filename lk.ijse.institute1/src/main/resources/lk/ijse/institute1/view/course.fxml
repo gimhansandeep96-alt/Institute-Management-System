@@ -12,14 +12,14 @@
    <children>
       <Label layoutX="14.0" layoutY="16.0" prefHeight="42.0" prefWidth="254.0" text="Course Management ">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="42.0" layoutY="90.0" text="Course ID" />
-      <TextField fx:id="txtid" layoutX="43.0" layoutY="127.0" prefHeight="26.0" prefWidth="194.0" />
-      <TextField fx:id="txtname" layoutX="43.0" layoutY="205.0" prefHeight="26.0" prefWidth="194.0" />
-      <TextField fx:id="txtprice" layoutX="42.0" layoutY="342.0" prefHeight="26.0" prefWidth="194.0" />
-      <TextField fx:id="txtduration" layoutX="43.0" layoutY="271.0" prefHeight="26.0" prefWidth="194.0" />
+      <TextField fx:id="txtid" layoutX="43.0" layoutY="127.0" prefHeight="26.0" prefWidth="194.0" promptText="01" />
+      <TextField fx:id="txtname" layoutX="43.0" layoutY="205.0" prefHeight="26.0" prefWidth="194.0" promptText="CMJD" />
+      <TextField fx:id="txtprice" layoutX="42.0" layoutY="342.0" prefHeight="26.0" prefWidth="194.0" promptText="6500.00" />
+      <TextField fx:id="txtduration" layoutX="43.0" layoutY="271.0" prefHeight="26.0" prefWidth="194.0" promptText="6 Months" />
       <Label layoutX="42.0" layoutY="253.0" text="Course Duration" />
       <Label layoutX="42.0" layoutY="177.0" text="Course Name" />
       <Label layoutX="42.0" layoutY="325.0" text="Course Price" />
@@ -31,9 +31,9 @@
             <TableColumn fx:id="pricetbl" prefWidth="169.59996337890624" text="Price" />
         </columns>
       </TableView>
-      <Button fx:id="savebtn" layoutX="48.0" layoutY="407.0" mnemonicParsing="false" onAction="#savebtnOnAction" text="Save" />
-      <Button fx:id="updatebtn" layoutX="113.0" layoutY="407.0" mnemonicParsing="false" onAction="#updatebtnOnAction" text="Update" />
-      <Button fx:id="deletebtn" layoutX="195.0" layoutY="407.0" mnemonicParsing="false" onAction="#deletebtnOnAction" text="Delete" />
-      <Button fx:id="clearbtn" layoutX="268.0" layoutY="407.0" mnemonicParsing="false" onAction="#clearbtnOnAction" text="Clear" />
+      <Button fx:id="savebtn" layoutX="48.0" layoutY="407.0" mnemonicParsing="false" onAction="#savebtnOnAction" style="-fx-background-color: #3498db;" text="Save" textFill="#131212" />
+      <Button fx:id="updatebtn" layoutX="113.0" layoutY="407.0" mnemonicParsing="false" onAction="#updatebtnOnAction" style="-fx-background-color: #27ae60;" text="Update" />
+      <Button fx:id="deletebtn" layoutX="195.0" layoutY="407.0" mnemonicParsing="false" onAction="#deletebtnOnAction" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Button fx:id="clearbtn" layoutX="268.0" layoutY="407.0" mnemonicParsing="false" onAction="#clearbtnOnAction" style="-fx-background-color: #95a5a6;" text="Clear" />
    </children>
 </AnchorPane>

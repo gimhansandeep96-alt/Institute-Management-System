@@ -8,27 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="711.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="lk.ijse.institute1.controller.studentController">
+<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.institute1.controller.studentController">
    <children>
-      <Label layoutX="31.0" layoutY="43.0" text="Student Registration">
+      <Label layoutX="31.0" layoutY="43.0" prefHeight="35.0" prefWidth="257.0" text="Student Registration">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="31.0" layoutY="125.0" text="Student ID" />
       <Label layoutX="31.0" layoutY="202.0" text="Student Name" />
       <Label layoutX="31.0" layoutY="276.0" text="Student Email" />
       <Label layoutX="31.0" layoutY="359.0" text="Student  Adress" />
-      <TextField fx:id="sidtxt" layoutX="31.0" layoutY="150.0" />
-      <TextField fx:id="snametxt" layoutX="31.0" layoutY="220.0" />
-      <TextField fx:id="semailtxt" layoutX="32.0" layoutY="305.0" />
-      <TextField fx:id="sadresstxt" layoutX="32.0" layoutY="388.0" />
-      <Button fx:id="savebtn" layoutX="45.0" layoutY="462.0" mnemonicParsing="false" onAction="#savebtnOnAction" text="Save" />
-      <Button fx:id="updatebtn" layoutX="113.0" layoutY="462.0" mnemonicParsing="false" onAction="#updatebtnOnAction" text="Upadate" />
-      <Button fx:id="deletebtn" layoutX="211.0" layoutY="462.0" mnemonicParsing="false" onAction="#deletebtnOnAction" text="Delete" />
-      <Button fx:id="clearbtn" layoutX="291.0" layoutY="462.0" mnemonicParsing="false" onAction="#clearbtnOnAction" text="Clear" />
-      <TableView fx:id="studenttbl" layoutX="211.0" layoutY="26.0" prefHeight="386.0" prefWidth="463.0">
+      <TextField fx:id="sidtxt" layoutX="31.0" layoutY="150.0" promptText="01" />
+      <TextField fx:id="snametxt" layoutX="31.0" layoutY="220.0" promptText="saman" />
+      <TextField fx:id="semailtxt" layoutX="32.0" layoutY="305.0" promptText="saman@gmail.com" />
+      <TextField fx:id="sadresstxt" layoutX="32.0" layoutY="388.0" promptText="colombo" />
+      <Button fx:id="savebtn" layoutX="45.0" layoutY="462.0" mnemonicParsing="false" onAction="#savebtnOnAction" style="-fx-background-color: #3498db;" text="Save" />
+      <Button fx:id="updatebtn" layoutX="113.0" layoutY="462.0" mnemonicParsing="false" onAction="#updatebtnOnAction" style="-fx-background-color: #2ecc71;" text="Upadate" />
+      <Button fx:id="deletebtn" layoutX="211.0" layoutY="462.0" mnemonicParsing="false" onAction="#deletebtnOnAction" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Button fx:id="clearbtn" layoutX="291.0" layoutY="462.0" mnemonicParsing="false" onAction="#clearbtnOnAction" style="-fx-background-color: #95a5a6;" text="Clear" />
+      <TableView fx:id="studenttbl" layoutX="217.0" layoutY="117.0" prefHeight="318.0" prefWidth="449.0">
         <columns>
           <TableColumn fx:id="stblid" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="stblname" prefWidth="119.20001220703125" text="Name" />

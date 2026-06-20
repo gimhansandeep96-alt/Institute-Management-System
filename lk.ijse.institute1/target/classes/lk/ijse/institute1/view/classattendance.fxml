@@ -7,11 +7,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="747.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="lk.ijse.institute1.controller.classattendanceController">
+<AnchorPane id="AnchorPane" prefHeight="551.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.institute1.controller.classattendanceController">
    <children>
-      <Label layoutX="59.0" layoutY="40.0" text="Student Attendance" />
+      <Label layoutX="59.0" layoutY="40.0" prefHeight="35.0" prefWidth="255.0" text="Student Attendance">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <Label layoutX="37.0" layoutY="118.0" text="Attendance ID" />
       <Label layoutX="37.0" layoutY="197.0" />
       <Label layoutX="37.0" layoutY="188.0" text="Schedule ID" />
@@ -22,11 +25,11 @@
       <ComboBox fx:id="statuscombo" layoutX="36.0" layoutY="369.0" prefWidth="150.0" />
       <Label layoutX="37.0" layoutY="264.0" />
       <Label layoutX="37.0" layoutY="264.0" text="Student ID" />
-      <Button fx:id="savebtn" layoutX="39.0" layoutY="499.0" mnemonicParsing="false" onAction="#savebtnonaction" text="Save" />
-      <Button fx:id="updatebtn" layoutX="111.0" layoutY="499.0" mnemonicParsing="false" onAction="#updatebtnonaction" text="Update" />
-      <Button fx:id="deletebtn" layoutX="199.0" layoutY="499.0" mnemonicParsing="false" onAction="#updatebtnonaction" text="Delete" />
-      <Button fx:id="clearbtn" layoutX="286.0" layoutY="499.0" mnemonicParsing="false" onAction="#clearbtnonaction" text="Clear" />
-      <TableView fx:id="studentattendancetbl" layoutX="218.0" layoutY="75.0" prefHeight="392.0" prefWidth="518.0">
+      <Button fx:id="savebtn" layoutX="39.0" layoutY="455.0" mnemonicParsing="false" onAction="#savebtnonaction" style="-fx-background-color: #3498db;" text="Save" />
+      <Button fx:id="updatebtn" layoutX="113.0" layoutY="455.0" mnemonicParsing="false" onAction="#updatebtnonaction" style="-fx-background-color: #2ecc71;" text="Update" />
+      <Button fx:id="deletebtn" layoutX="193.0" layoutY="455.0" mnemonicParsing="false" onAction="#updatebtnonaction" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Button fx:id="clearbtn" layoutX="282.0" layoutY="455.0" mnemonicParsing="false" onAction="#clearbtnonaction" style="-fx-background-color: #95a5a6;" text="Clear" />
+      <TableView fx:id="studentattendancetbl" layoutX="218.0" layoutY="118.0" prefHeight="287.0" prefWidth="518.0">
         <columns>
           <TableColumn fx:id="attendanceidtbl" prefWidth="142.4000244140625" text="Attendance Id" />
           <TableColumn fx:id="scheduleidtbl" prefWidth="165.59994506835938" text="Schedule ID" />
